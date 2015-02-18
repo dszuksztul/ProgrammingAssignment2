@@ -1,7 +1,4 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## create 'object' that hold matrix and cached value associated with this matrix
+## create 'object' that holds matrix and cached value associated with this matrix
 ## (by name convetion this value is an inversion of matrix)
 ## setting new matrix on that object, also resets associated value
 makeCacheMatrix <- function(x = matrix()) {
@@ -10,11 +7,17 @@ makeCacheMatrix <- function(x = matrix()) {
     x <<- y
     inv <<- NULL
   }
-  get <- function() x
-  setinv <- function(newInv) inv <<- newInv
-  getinv <- function() inv
+  get <- function() {
+    x
+  }
+  setinv <- function(newInv) {
+    inv <<- newInv
+  }
+  getinv <- function() {
+    inv
+  }
   
-  list( set = set, get = get, setinv = setinv, getinv = getinv)
+  list( set = set, get = get, setinv = setinv, getinv = getinv )
 }
 
 
@@ -23,7 +26,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## otherwise calculates inversion and additionally caches it in given object
 cacheSolve <- function(x, ...) {
   inv <- x$getinv()
-  if ( !is.null(inv)) {
+  if ( !is.null(inv) ) {
     return(inv)
   }
   matrix = x$get()
